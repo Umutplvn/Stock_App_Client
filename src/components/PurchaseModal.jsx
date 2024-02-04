@@ -14,10 +14,14 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
   const { postStockData, putStockData } = useStockCall()
   const { firms, products, brands } = useSelector((state) => state.stock)
 
+  console.log("firms", firms);
+  console.log("info", info);
+  
   const handleChange = (e) => {
     const { name, value } = e.target
     // setInfo({ ...info, [name]: Number(value) })
     setInfo({ ...info, [name]: (value) })
+    console.log("info change",);
   }
 
   const handleSubmit = (e) => {
@@ -58,7 +62,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 labelId="firm-select-label"
                 label="Firm"
                 name="firm_id"
-                value={info?.firm_id?.id || ""}
+                value={info?.firm_id || ""}
                 onChange={handleChange}
                 required
               >
@@ -84,7 +88,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 label="Brand"
                 id="brand-select"
                 name="brand_id"
-                value={info?.brand_id?.id || ""}
+                value={info?.brand_id || ""}
                 onChange={handleChange}
                 required
               >
@@ -92,13 +96,12 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                   Add New Brand
                 </MenuItem>
                 <hr />
-                {brands?.map((item) => {
-                  return (
+                {brands?.map((item) => {return (
                     <MenuItem key={item.id} value={item.id}>
                       {item.name}
                     </MenuItem>
                   )
-                })}
+})}
               </Select>
             </FormControl>
             <FormControl>
@@ -110,7 +113,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
                 label="Product"
                 id="product-select"
                 name="product_id"
-                value={info?.product_id?.id || ""}
+                value={info?.product_id || ""}
                 onChange={handleChange}
                 required
               >

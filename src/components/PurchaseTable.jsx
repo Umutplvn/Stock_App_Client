@@ -106,6 +106,7 @@ export default function PurchaseTable({ handleOpen, setInfo }) {
     },
   ]
 
+
   return (
     <Box sx={{ width: "100%", mt: 2 }}>
       <DataGrid
