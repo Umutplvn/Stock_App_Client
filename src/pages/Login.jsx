@@ -127,7 +127,10 @@ const style={
             <Link to="/register">Don't you have an account?</Link>
           </Box>
 
-
+          <Box sx={{position:"fixed", bottom:"0", left:"0", backgroundColor:"red", border:"5px", borderRadius:"1rem", padding:"0.5rem"}}>
+    <Typography  sx={{fontSize:"12px",  color:"white"}}>Email: stock@site.com</Typography>
+    <Typography  sx={{fontSize:"12px",  color:"white"}}>Password: 1a2b3c4D!</Typography>
+    </Box>
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>

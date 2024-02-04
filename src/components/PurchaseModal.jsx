@@ -14,14 +14,11 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
   const { postStockData, putStockData } = useStockCall()
   const { firms, products, brands } = useSelector((state) => state.stock)
 
-  console.log("firms", firms);
-  console.log("info", info);
-  
+ 
   const handleChange = (e) => {
     const { name, value } = e.target
     // setInfo({ ...info, [name]: Number(value) })
     setInfo({ ...info, [name]: (value) })
-    console.log("info change",);
   }
 
   const handleSubmit = (e) => {
