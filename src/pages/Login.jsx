@@ -12,9 +12,11 @@ import { Formik, Form } from "formik"
 import { object, string } from "yup"
 // import { login } from "../hooks/useAuthCall"
 import useAuthCall from "../hooks/useAuthCall"
+import { useSelector } from "react-redux"
 
 const Login = () => {
   const { login } = useAuthCall()
+  const { loading } = useSelector((state) => state.auth)
 
   //? harici validasyon şemasi
   const loginSchema = object({
@@ -30,7 +32,10 @@ const Login = () => {
       .matches(/[A-Z]/, "En az bir büyük harf içermelidir.")
       .matches(/[!,?{}><%&$#£+-.]+/, "En az bir özel karekter içermelidir."),
   })
-
+const style={
+  width:"7rem",
+  position: "absolute",
+}
   return (
     <Container maxWidth="lg">
       <Grid
@@ -49,7 +54,7 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={12} sm={10} md={6}>
-          <Avatar
+                 <Avatar
             sx={{
               backgroundColor: "secondary.light",
               m: "auto",
@@ -67,7 +72,13 @@ const Login = () => {
           >
             Login
           </Typography>
-
+          <Box>
+          <Box display={{position:"relative"}} sx={{ width:"%100", display:"flex", justifyContent:"center", alignContent:"center"}}>
+          {loading &&  <img src="https://i.gifer.com/ZKZg.gif" alt="loading" style={style}/>}
+          </Box>
+          </Box>
+         
+          
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
@@ -115,6 +126,8 @@ const Login = () => {
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Don't you have an account?</Link>
           </Box>
+
+
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>

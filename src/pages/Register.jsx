@@ -9,10 +9,15 @@ import { Link } from "react-router-dom"
 import RegisterForm, { registerSchema } from "../components/RegisterForm"
 import { Formik } from "formik"
 import useAuthCall from "../hooks/useAuthCall"
+import { useSelector } from "react-redux"
 
 const Register = () => {
   const { register } = useAuthCall()
-
+  const { loading } = useSelector((state) => state.auth)
+  const style={
+    width:"7rem",
+    position: "absolute",
+  }
   return (
     <Container maxWidth="lg">
       <Grid
@@ -50,6 +55,11 @@ const Register = () => {
           >
             Register
           </Typography>
+          <Box>
+          <Box display={{position:"relative"}} sx={{ width:"%100", display:"flex", justifyContent:"center", alignContent:"center"}}>
+          {loading &&  <img src="https://i.gifer.com/ZKZg.gif" alt="loading" style={style}/>}
+          </Box>
+          </Box>
 
           <Formik
             initialValues={{
