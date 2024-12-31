@@ -67,10 +67,10 @@ const MenuListItems = () => {
                 : navigate(item.url)
             }}
             sx={{
-              color: "white",
-              "& .MuiSvgIcon-root": { color: "white" },
-              "&:hover": { color: "red" },
-              "&:hover .MuiSvgIcon-root": { color: "red" },
+              color: "black",
+              "& .MuiSvgIcon-root": { color: "black" },
+              "&:hover": { color: "#252525" },
+              "&:hover .MuiSvgIcon-root": { color: "#252525" },
             }}
           >
             <ListItemButton>

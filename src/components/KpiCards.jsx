@@ -4,6 +4,7 @@ import PaymentsIcon from "@mui/icons-material/Payments"
 import { deepPurple, pink, amber } from "@mui/material/colors"
 import { Paper, Grid, Avatar, Typography, Box } from "@mui/material"
 import { useSelector } from "react-redux"
+
 const KpiCards = () => {
   const { sales, purchases } = useSelector((state) => state.stock)
 
@@ -54,6 +55,12 @@ const KpiCards = () => {
               alignItems: "center",
               justifyContent: "center",
               width: "280px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)", // Soft and cool shadow effect
+              borderRadius: "12px", // Smooth corners for a more modern look
+              transition: "box-shadow 0.3s ease-in-out", // Smooth transition for hover effect
+              "&:hover": {
+                boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)", // Shadow on hover for an interactive feel
+              }
             }}
             elevation={5}
           >

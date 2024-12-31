@@ -19,7 +19,12 @@ const Register = () => {
     position: "absolute",
   }
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg"
+    sx={{
+      position: "relative",
+      filter: loading ? "blur(5px)" : "none", // Apply blur effect when loading
+    }}
+    >
       <Grid
         container
         justifyContent="center"
@@ -86,7 +91,11 @@ const Register = () => {
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
 
-          <Box sx={{ textAlign: "center", mt: 2 }}>
+          <Box     sx={{
+      pointerEvents: loading ? "none" : "auto", // Disable link interaction
+      color: loading ? "#ccc" : "inherit", // Change color when loading
+      textDecoration: "none", // Optional: Remove underline
+    }}>
             <Link to="/">Do you have an account?</Link>
           </Box>
         </Grid>

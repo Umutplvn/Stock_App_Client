@@ -18,12 +18,13 @@ const Brands = () => {
 
   return (
     <Box>
-      <Typography variant="h4" color="error" mb={2}>
+      <Typography variant="h5" color="error" mb={2} sx={{fontWeight:"600"}}>
         Brands
       </Typography>
 
       <Button
         variant="contained"
+        sx={{fontSize:"0.8rem", backgroundColor:"#303030", mb:"1rem"}}
         onClick={() => {
           setInfo({})
           setOpen(true)

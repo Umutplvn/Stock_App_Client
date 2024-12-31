@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <Typography variant="h4" color="error" mb={2}>
+      <Typography variant="h5" color="error" mb={2} sx={{fontWeight:"600"}}>
         Dashboard
       </Typography>
 

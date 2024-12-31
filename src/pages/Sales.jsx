@@ -29,12 +29,12 @@ const Sales = () => {
   }, []) // eslint-disable-line
   return (
     <div>
-      <Typography variant="h4" color="error" mb={3}>
+      <Typography variant="h5" color="error" mb={2} sx={{fontWeight:"600"}}>
         Sales
       </Typography>
       <Button
         variant="contained"
-        sx={{ marginBottom: "1rem" }}
+        sx={{fontSize:"0.8rem", backgroundColor:"#303030", mb:"1rem"}}
         onClick={() => setOpen(true)}
       >
         New Sale

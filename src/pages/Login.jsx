@@ -142,12 +142,12 @@ const Login = () => {
                     value={values.password}
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
-                    disabled={loading} // Disable input when loading
+                    disabled={loading} 
                   />
                   <Button
                     variant="contained"
                     type="submit"
-                    disabled={loading} // Disable button when loading
+                    disabled={loading} 
                   >
                     Submit
                   </Button>
