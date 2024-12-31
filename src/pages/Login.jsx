@@ -1,24 +1,23 @@
-import Avatar from "@mui/material/Avatar"
-import Container from "@mui/material/Container"
-import Grid from "@mui/material/Grid"
-import Typography from "@mui/material/Typography"
-import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
-import { Link } from "react-router-dom"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import Button from "@mui/material/Button"
-import { Formik, Form } from "formik"
-import { object, string } from "yup"
-// import { login } from "../hooks/useAuthCall"
-import useAuthCall from "../hooks/useAuthCall"
-import { useSelector } from "react-redux"
+import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/stock login.jpg";
+import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { Formik, Form } from "formik";
+import { object, string } from "yup";
+import useAuthCall from "../hooks/useAuthCall";
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  const { login } = useAuthCall()
-  const { loading } = useSelector((state) => state.auth)
+  const { login } = useAuthCall();
+  const { loading } = useSelector((state) => state?.auth);
 
-  //? harici validasyon şemasi
+  // Validation schema
   const loginSchema = object({
     email: string()
       .email("Lutfen valid bir email giriniz")
@@ -31,13 +30,16 @@ const Login = () => {
       .matches(/[a-z]/, "En az bir küçük harf içermelidir.")
       .matches(/[A-Z]/, "En az bir büyük harf içermelidir.")
       .matches(/[!,?{}><%&$#£+-.]+/, "En az bir özel karekter içermelidir."),
-  })
-const style={
-  width:"7rem",
-  position: "absolute",
-}
+  });
+
   return (
-    <Container maxWidth="lg">
+    <Container
+      maxWidth="lg"
+      sx={{
+        position: "relative",
+        filter: loading ? "blur(5px)" : "none", // Apply blur effect when loading
+      }}
+    >
       <Grid
         container
         justifyContent="center"
@@ -47,14 +49,22 @@ const style={
           p: 2,
         }}
       >
-        <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
+        <Grid item xs={12} sx={{ pt: "3rem" }}>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+            variant="h3"
+            color="primary"
+            align="center"
+          >
             STOCK APP
           </Typography>
         </Grid>
 
         <Grid item xs={12} sm={10} md={6}>
-                 <Avatar
+          <Avatar
             sx={{
               backgroundColor: "secondary.light",
               m: "auto",
@@ -69,23 +79,40 @@ const style={
             align="center"
             mb={4}
             color="secondary.light"
+            sx={{ fontFamily: "'Montserrat', sans-serif", fontWeight: "600" }}
           >
             Login
           </Typography>
           <Box>
-          <Box display={{position:"relative"}} sx={{ width:"%100", display:"flex", justifyContent:"center", alignContent:"center"}}>
-          {loading &&  <img src="https://i.gifer.com/ZKZg.gif" alt="loading" style={style}/>}
+            <Box
+              display={{ position: "relative" }}
+              sx={{
+                width: "%100",
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              {loading && (
+                <img
+                  src="https://i.gifer.com/ZKZg.gif"
+                  alt="loading"
+                  style={{
+                    width: "7rem",
+                    position: "absolute",
+                  }}
+                />
+              )}
+            </Box>
           </Box>
-          </Box>
-         
-          
+
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, action) => {
-              login(values)
-              action.resetForm()
-              action.setSubmitting(false)
+              login(values);
+              action.resetForm();
+              action.setSubmitting(false);
             }}
           >
             {({ handleChange, handleBlur, values, touched, errors }) => (
@@ -102,9 +129,10 @@ const style={
                     value={values.email}
                     error={touched.email && Boolean(errors.email)}
                     helperText={errors.email}
+                    disabled={loading} // Disable input when loading
                   />
                   <TextField
-                    label="password"
+                    label="Password"
                     name="password"
                     id="password"
                     type="password"
@@ -114,8 +142,13 @@ const style={
                     value={values.password}
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
+                    disabled={loading} // Disable input when loading
                   />
-                  <Button variant="contained" type="submit">
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    disabled={loading} // Disable button when loading
+                  >
                     Submit
                   </Button>
                 </Box>
@@ -124,23 +157,48 @@ const style={
           </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Don't you have an account?</Link>
-          </Box>
+  <Link
+    to="/register"
+    style={{
+      pointerEvents: loading ? "none" : "auto", // Disable link interaction
+      color: loading ? "#ccc" : "inherit", // Change color when loading
+      textDecoration: "none", // Optional: Remove underline
+    }}
+  >
+    Don't you have an account?
+  </Link>
+</Box>
 
-          <Box sx={{position:"fixed", bottom:"0", left:"0", backgroundColor:"red", border:"5px", borderRadius:"1rem", padding:"0.5rem"}}>
-    <Typography  sx={{fontSize:"12px",  color:"white"}}>Email: stock@site.com</Typography>
-    <Typography  sx={{fontSize:"12px",  color:"white"}}>Password: 1a2b3c4D!</Typography>
-    </Box>
+          <Box
+            sx={{
+              position: "fixed",
+              bottom: "0",
+              left: "0",
+              border: "5px",
+              borderRadius: "1rem",
+              padding: "0.5rem",
+            }}
+          >
+            <Typography sx={{ fontSize: "12px", fontWeight: "700" }}>
+              You can use the credentials below
+            </Typography>
+            <Typography sx={{ fontSize: "12px" }}>
+              Email: stock@site.com
+            </Typography>
+            <Typography sx={{ fontSize: "12px" }}>
+              Password: 1a2b3c4D!
+            </Typography>
+          </Box>
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
           <Container>
-            <img src={image} alt="img" />
+            <img src={image} alt="img" style={{ width: "90%" }} />
           </Container>
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

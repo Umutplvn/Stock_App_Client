@@ -2,7 +2,7 @@ import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import Avatar from "@mui/material/Avatar"
 import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
+import image from "../assets/stock login.jpg"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import { Link } from "react-router-dom"
@@ -31,7 +31,15 @@ const Register = () => {
         }}
       >
         <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
+        <Typography
+            sx={{
+              fontWeight: 700,
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+            variant="h3"
+            color="primary"
+            align="center"
+          >
             STOCK APP
           </Typography>
         </Grid>
@@ -83,9 +91,9 @@ const Register = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={0} sm={7} md={6}>
+        <Grid item xs={0} sm={7} md={6}  sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
           <Container>
-            <img src={image} alt="" />
+            <img src={image} alt="" style={{width:"90%"}} />
           </Container>
         </Grid>
       </Grid>
