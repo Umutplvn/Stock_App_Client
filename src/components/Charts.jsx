@@ -71,12 +71,12 @@ const Charts = () => {
 
   return (
     <Box style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '3rem', flexWrap: 'wrap' }}>
-      <Box style={{ width: '100%', minWidth: '300px', maxWidth: '600px', marginBottom: '20px' }}>
+      <Box style={{ width: '100%', minWidth: '300px', maxWidth: '700px', marginBottom: '20px' }}>
         <Typography sx={{fontSize:"1.2rem", fontWeight:"700"}}>Total Sales</Typography>
         <Line data={salesChartData} />
       </Box>
 
-      <Box style={{ width: '100%', minWidth: '300px', maxWidth: '600px', marginBottom: '20px', }}>
+      <Box style={{ width: '100%', minWidth: '300px', maxWidth: '700px', marginBottom: '20px', }}>
       <Typography sx={{fontSize:"1.2rem", fontWeight:"700"}}>Total Purchases</Typography>
         <Line data={purchasesChartData} />
       </Box>
