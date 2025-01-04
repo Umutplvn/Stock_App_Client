@@ -19,6 +19,32 @@ const Register = () => {
     position: "absolute",
   }
   return (
+
+    <>
+    <Box
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    sx={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      zIndex: 2233,
+    }}
+  >
+              {loading && (
+                <img
+                  src="https://i.gifer.com/ZKZg.gif"
+                  alt="loading"
+                  style={{
+                    width: "5rem",
+                    height:"5rem",
+                    zIndex:2233
+                  }}
+                />
+              )}
+            </Box>
     <Container maxWidth="lg"
     sx={{
       position: "relative",
@@ -68,11 +94,7 @@ const Register = () => {
           >
             Register
           </Typography>
-          <Box>
-          <Box display={{position:"relative"}} sx={{ width:"%100", display:"flex", justifyContent:"center", alignContent:"center"}}>
-          {loading &&  <img src="https://i.gifer.com/ZKZg.gif" alt="loading" style={style}/>}
-          </Box>
-          </Box>
+     
 
           <Formik
             initialValues={{
@@ -107,6 +129,7 @@ const Register = () => {
         </Grid>
       </Grid>
     </Container>
+    </>
   )
 }
 
