@@ -56,7 +56,7 @@ const useAuthCall = () => {
         userData
       )
       dispatch(loginSuccess(data))
-      toastSuccessNotify("login islemi basarili")
+      toastSuccessNotify("Successfully logged in")
       navigate("/stock")
     } catch (error) {
       console.log(error.message)
@@ -70,12 +70,12 @@ const useAuthCall = () => {
     try {
       await axios.post(`${import.meta.env.VITE_BASE_URL}/account/auth/logout/`)
       dispatch(logoutSuccess())
-      toastSuccessNotify("logout islemi basarili")
+      toastSuccessNotify("Successfully logged out")
       navigate("/")
     } catch (error) {
       console.log(error)
       dispatch(fetchFail())
-      toastErrorNotify("Logout islemi basarisiz")
+      toastErrorNotify("Logged out failed")
     }
   }
 
@@ -87,12 +87,12 @@ const useAuthCall = () => {
         userData
       )
       dispatch(registerSuccess(data))
-      toastSuccessNotify("kayit islemi basarili")
+      toastSuccessNotify("Registration successful")
       navigate("/stock")
     } catch (error) {
       console.log(error)
       dispatch(fetchFail())
-      toastErrorNotify("Kayit islemi basarisiz olmustur.")
+      toastErrorNotify("Registration failed")
     }
   }
 
