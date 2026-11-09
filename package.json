@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test test/kpiMetrics.test.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -43,5 +44,6 @@
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3",
     "vite": "^4.5.5"
-  }
+  },
+  "license": "MIT"
 }

@@ -4,17 +4,11 @@ import PaymentsIcon from "@mui/icons-material/Payments"
 import { deepPurple, pink, amber } from "@mui/material/colors"
 import { Paper, Grid, Avatar, Typography, Box } from "@mui/material"
 import { useSelector } from "react-redux"
+import { calculateKpiTotals } from "../utils/kpiMetrics"
 
 const KpiCards = () => {
   const { sales, purchases } = useSelector((state) => state.stock)
-
-  const totalSales = sales
-    ?.map((item) => Number(item.price_total))
-    .reduce((acc, sale) => acc + sale, 0)
-
-  const totalPurchases = purchases
-    ?.map((item) => Number(item.price_total))
-    .reduce((acc, sale) => acc + sale, 0)
+  const { totalSales, totalPurchases, totalProfit } = calculateKpiTotals(sales, purchases)
 
   const cardData = [
     {
@@ -31,7 +25,7 @@ const KpiCards = () => {
       bgColor: pink[100],
       color: pink[700],
       title: "profit",
-      value: `$${totalSales - totalPurchases}`,
+      value: `$${totalProfit}`,
     },
     {
       id: 3,
@@ -55,11 +49,11 @@ const KpiCards = () => {
               alignItems: "center",
               justifyContent: "center",
               width: "280px",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)", // Soft and cool shadow effect
-              borderRadius: "12px", // Smooth corners for a more modern look
-              transition: "box-shadow 0.3s ease-in-out", // Smooth transition for hover effect
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)",
+              borderRadius: "12px",
+              transition: "box-shadow 0.3s ease-in-out",
               "&:hover": {
-                boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)", // Shadow on hover for an interactive feel
+                boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)",
               }
             }}
             elevation={5}
